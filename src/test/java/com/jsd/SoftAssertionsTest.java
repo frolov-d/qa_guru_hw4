@@ -11,8 +11,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SoftAssertionsTest {
 
-    private static final String selenidePage = "https://github.com/selenide/selenide";
-    private static final String exampleToCheck = """
+    private static final String SELENIDE_PAGE = "https://github.com/selenide/selenide";
+    private static final String EXAMPLE_TO_CHECK = """
             @ExtendWith({SoftAssertsExtension.class})
             class Tests {
               @Test
@@ -34,11 +34,11 @@ public class SoftAssertionsTest {
 
     @Test
     void softAssertionsPageShouldHaveJUnit5ExampleCode() {
-        open(selenidePage);
+        open(SELENIDE_PAGE);
         $("#wiki-tab").click();
         $("#wiki-pages-box").$("button").click();
         $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
         $(byText("SoftAssertions")).click();
-        $(".markdown-body").shouldHave(text(exampleToCheck));
+        $(".markdown-body").shouldHave(text(EXAMPLE_TO_CHECK));
     }
 }
