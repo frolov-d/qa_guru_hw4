@@ -14,7 +14,7 @@ public class DragAndDropTest {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
-//        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -27,8 +27,8 @@ public class DragAndDropTest {
     @Test
     void figuresShouldBeSwappedByActionsTest() {
         open(FIGURE_PAGE);
-        actions().clickAndHold($("#column-a"))
-                .moveToElement($("#column-b")).release().build().perform();
+        actions().moveToElement($("#column-a")).clickAndHold($("#column-a"))
+                .moveToElement($("#column-b")).release().perform();
         $("#column-b").shouldHave(text("A"));
     }
 }
